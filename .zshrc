@@ -28,6 +28,20 @@ alias dev="adb connect 192.168.1.36:5555 && scrcpy"
 alias dev2="adb connect 192.168.1.43:5555 && scrcpy"
 alias fuck="sudo apt update && sudo apt upgrade"
 
+# PowerSaving
+
+cpu-off() {
+	for ((i=4;i<$(nproc);i++));
+	do echo 0 > /sys/devices/system/cpu/cpu"$i"/online;
+	done
+}
+
+cpu-on() {
+	for ((i=4;i<$(nproc);i++));
+	do echo 1 > /sys/devices/system/cpu/cpu"$i"/online;
+	done
+}
+
 neofetch
 
 # Flutter:
